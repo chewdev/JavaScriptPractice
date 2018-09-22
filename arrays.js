@@ -264,3 +264,25 @@ console.log(user55Notes);
 
 // Array.prototype.filter is supported by all major modern browsers
 // A polyfill is available if support for ES < 5.1 is needed
+
+// Array.prototype.find()
+// This method accepts a callback and option 'this' argument for that callback as arguments
+// It returns the first element of the array that returns true when passed to the callback
+// The callback is provided the current element, it's index and the entire array
+
+var arrToFind = [1, 2, 5, 9, 200, 150, 101];
+var found = arrToFind.find(el => el > 100); // 200
+console.log(found);
+
+// .find method returns undefined when no element is found
+var found2 = arrToFind.find(el => el === 7); // undefined
+console.log(found2);
+
+// Find the first element that is greater than the next element
+var found3 = arrToFind.find(
+  (el, ind, arr) => (ind !== arr.length - 1 ? el > arr[ind + 1] : false)
+); // 200
+console.log(found3);
+
+// .find method is available in most major modern browsers except IE
+// This method is an ES6 specification and a polyfill is available on MDN for older browsers
