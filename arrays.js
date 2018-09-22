@@ -116,3 +116,28 @@ var concatWithArr = [4, 5, 6];
 var concatedArr = concatToArr.concat(concatWithArr, [7, 8, 9]); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 console.log(concatedArr);
+
+// Array.prototype.copyWithin()
+// Shallow copies a part the array to another location within the array
+// arr.copyWithin(target, start, end)
+// target is the index at which you wish you begin replacing elements
+// start is the index at which you wish to begin copying elements
+// end is the index at which you wish to stop copying elements (non-inclusive)
+
+var arrCopyWithin = [1, 2, 3, ["arr", { obj: "bob" }, 3], "what"];
+
+arrCopyWithin.copyWithin(2, 3, 5); // [1, 2, ['arr', {obj: 'bob'}, 3], 'what', 'what']
+
+console.log(arrCopyWithin);
+
+arrCopyWithin.copyWithin(2, 1, 2); // [1, 2, 2, 'what', 'what']
+
+console.log(arrCopyWithin);
+
+// The start value (2nd arg) is 0 by default
+// The end value (3rd arg) is arr.length by default
+// Not specifying start or end results in copying from beginning of the array to the end
+// The amount of items copied is dependent upon the target index and number of elements in the array
+arrCopyWithin.copyWithin(1); // [1, 1, 2, 2, 'what']
+
+console.log(arrCopyWithin);
