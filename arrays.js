@@ -62,3 +62,25 @@ console.log(
   fromArr6,
   fromArr7
 );
+
+// Array.from polyfill is available on MDN as it is an ES6 specification
+
+// Array.isArray() - check if the passed parameter is an Array
+// returns true if value is an Array, false otherwise
+// Array.isArray is prefered over instanceof for checking instance of an Array
+// Array.isArray works through iframes, however instanceof does not
+
+var isArr1 = Array.isArray([]); // true
+var isArrArr = [1, 2, 3, "bob", null, undefined, ["is", "array"]];
+var isArr2 = Array.isArray(isArrArr); // true
+
+var isArr3 = isArrArr.map(val => Array.isArray(val)); // [false, false, false, false, false, false, false, true]
+
+console.log(isArr1, isArr2, isArr3);
+
+// Array.isArray polyfill if needed (initial specification in ECMAScript 5.1)
+if (!Array.isArray) {
+  Array.isArray = function(arg) {
+    return Object.prototype.toString.call(arg) === "[object Array]";
+  };
+}
