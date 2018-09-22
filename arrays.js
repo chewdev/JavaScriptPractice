@@ -103,3 +103,16 @@ if (!Array.of) {
     return Array.prototype.slice.call(arguments);
   };
 }
+
+// Array.prototype.concat() - Array method that merges multiple arrays
+// Does not alter values passed to it or the array that it is called upon
+// Returns a new array
+// Nested arrays are not spread into new array and are instead kept as a single array element within the new array
+// Arrays and objects within the arrays being concatenated are passed by reference
+// Changing the array or object element within the original array will also change it within the concatenated array
+
+var concatToArr = [1, 2, 3];
+var concatWithArr = [4, 5, 6];
+var concatedArr = concatToArr.concat(concatWithArr, [7, 8, 9]); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+console.log(concatedArr);
