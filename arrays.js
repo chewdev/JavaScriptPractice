@@ -49,5 +49,16 @@ var fromArr5 = Array.from(
   },
   johnson
 ); // ['bob Johnson', 'jane Johnson', 'joe Johnson']
+var fromArr6 = Array.from({ length: 5 }); // [undefined, undefined, undefined, undefined, undefined]
+var fromArr7 = Array.from({ length: 5 }, (v, i) => i);
+// [0, 1, 2, 3, 4]
 
-console.log(fromArr, fromArr2, fromArr3, fromArr4, fromArr5);
+console.log(
+  fromArr,
+  fromArr2,
+  fromArr3,
+  fromArr4,
+  fromArr5,
+  fromArr6,
+  fromArr7
+);
