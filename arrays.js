@@ -286,3 +286,29 @@ console.log(found3);
 
 // .find method is available in most major modern browsers except IE
 // This method is an ES6 specification and a polyfill is available on MDN for older browsers
+
+// Array.prototype.findIndex()
+// This method accepts a callback and a 'this' argument to be used for the callback as its 2 arguments
+// The current element, it's index and the entire array are passed to the callback
+// This method returns the index of the first element that returns true from the callback
+
+var arrToFindIndex = [1, 3, 2, 20, 30, 99, "bob", "john"];
+
+// Find the index of the first element whose value is greater than 20
+var foundIndex = arrToFindIndex.findIndex(el => el > 20); // 4
+console.log(foundIndex);
+
+// Find the index of the first element whose value is greater than the next element in the array
+var foundIndex2 = arrToFindIndex.findIndex(
+  (el, ind, arr) => (arr[ind + 1] ? el > arr[ind + 1] : false)
+); // 1
+console.log(foundIndex2);
+
+// Find the index of the first element that is not a number
+var foundIndex3 = arrToFindIndex.findIndex(
+  el => !(typeof el === "number" && !isNaN(el))
+); // 6
+console.log(foundIndex3);
+
+// .findIndex is an ES6 specification and is not supported by IE
+// A polyfill is available on MDN for older browsers
