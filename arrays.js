@@ -206,3 +206,61 @@ arrToFill.fill("bob"); // ['bob', 'bob', 'bob', 'bob', 'bob']
 console.log(arrToFill);
 
 // .fill method is an ES6 specification and a polyfill is available on MDN if needed
+
+// Array.prototype.filter()
+// This method is used to filter out (remove) elements that do not pass a conditional test when passed to a provided callback
+// This method loops over each element of the array and passes the element to the provided callback
+// If the callback returns true, the element is included in the return array, otherwise it is removed
+
+var arrToFilter = [1, 2, 50, 100, 200, 221, 33];
+
+// Filter out all elements that are 55 or greater
+var filteredArr1 = arrToFilter.filter(el => el < 55);
+console.log(filteredArr1); // [1, 2, 50, 33]
+
+// Filter out all elements that are not even
+var filteredArr2 = arrToFilter.filter(el => el % 2 === 0);
+console.log(filteredArr2); // [2, 50, 100, 200]
+
+// Filter out all elements that are not greater than the previous element
+// .filter passes 3 arguments to the callback: current element, current index, the entire array being filtered
+var filteredArr3 = arrToFilter.filter(
+  (el, ind, arr) => (ind === 0 ? true : el > arr[ind - 1])
+);
+console.log(filteredArr3); // [1, 2, 50, 100, 200, 221]
+
+var arrToFilter2 = [
+  {
+    id: 1,
+    userId: 55,
+    note: "hi"
+  },
+  {
+    id: 2,
+    userId: 77,
+    note: "bye"
+  },
+  {
+    id: 3,
+    userId: 55,
+    note: "How are you?"
+  },
+  {
+    id: 4,
+    userId: 99,
+    note: "I'm new here"
+  }
+];
+
+// Filter array to only return notes written by user with userId = 55
+var user55Notes = arrToFilter2.filter(obj => obj.userId === 55);
+console.log(user55Notes);
+
+// We can also pass an optional 'this' argument as the second argument to filter.
+// The 'this' argument will be used when executing the callback
+// The callback is the first argument
+
+// Filter returns a new array. If no items pass the callback test, an empty array is returned
+
+// Array.prototype.filter is supported by all major modern browsers
+// A polyfill is available if support for ES < 5.1 is needed
