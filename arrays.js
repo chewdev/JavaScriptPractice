@@ -347,3 +347,27 @@ console.log(foundIndex3);
 // // [2, 4, 6, 8]
 
 // flatMap should not be used currently as it is experiemental
+
+// Array.prototype.forEach()
+// This method maps over each element of an array, however it returns undefined
+// This method does not return the array nor directly alter the existing array
+// All persisting changes / modifications must be made upon external variables within the callback
+// forEach(callback, thisArg) takes a callback and the 'this' argument for the callback
+// The callback is called upon each element in the array
+// The callback is passed the current element, current index and entire array as such:
+// callback(el, ind, arr)
+
+var forEachArr = ["bob", "joe", "jane"];
+
+var peopleObj = {};
+forEachArr.forEach((el, ind) => {
+  peopleObj[ind] = el;
+}); // returns undefined
+
+console.log(peopleObj); // {0: 'bob', 1: 'joe', 2: 'jane'}
+
+// forEachArr has not been modified and can be used in other forEach loops
+forEachArr.forEach(el => console.log(el)); // 'bob', 'joe', 'jane'
+
+// .forEach method is available in all major modern browsers
+// A polyfill is available on MDN if support for ES < 5.1 is needed
