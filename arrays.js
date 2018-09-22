@@ -329,3 +329,21 @@ console.log(foundIndex3);
 // var arrToFlat2 = [1, 2, , 4, 5];
 // var flattened3 = arrToFlat2.flat(); // [1, 2, 4, 5];
 // console.log(flattened3);
+
+// Array.prototype.flatMap()
+// This method is experimental and has little to no support from browsers currently
+// This method is essentially the same as a map followed by a flat of depth 1
+
+// var arrToFlatMap = [[1, 2, 3], [4, 5, 6]];
+// var flattenedMap = arrToFlatMap.flatMap(x => {
+//   x.push(7);
+//   return x;
+// }); // [1, 2, 3, 7, 4, 5, 6, 7]
+// console.log(flattenedMap);
+
+// arr1.flatMap(x => [x * 2]);
+// // is equivalent to
+// arr1.reduce((acc, x) => acc.concat([x * 2]), []);
+// // [2, 4, 6, 8]
+
+// flatMap should not be used currently as it is experiemental
