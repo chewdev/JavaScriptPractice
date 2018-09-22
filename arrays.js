@@ -141,3 +141,26 @@ console.log(arrCopyWithin);
 arrCopyWithin.copyWithin(1); // [1, 1, 2, 2, 'what']
 
 console.log(arrCopyWithin);
+
+// Array.prototype.entries()
+// Returns a new Array Iterator with key/value pairs
+// key is the index in the array and value is the elements value
+// We can step through an iterator using the .next method
+// The .next method returns the next item of the iterator as an object
+// The object contains a key of 'done' which will be true when all elements have been iterated through
+// While there are still elements, 'done' will be false
+// The other key in the object is 'value' which contains the array of key/values: i.e. [0, 'bob'] --- The 0th element of the array was 'bob'
+
+var myIterArr = [1, 2, 3];
+var myIteratorObj = myIterArr.entries(); // create new Array Iterator
+var next = myIteratorObj.next(); // grab the next element of the iterator
+var done = next.done; // check if next was the final element (next.done === true)
+
+// While final element hasn't been reached, continue
+while (!done) {
+  console.log(next); // log current element
+  next = myIteratorObj.next(); // grab next element
+  done = next.done; // check if done, exit loop when done
+}
+
+// {value: [0, 1], done: false} - {value: [1, 2], done: false} - {value: [2, 3], done: false}
