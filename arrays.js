@@ -312,3 +312,20 @@ console.log(foundIndex3);
 
 // .findIndex is an ES6 specification and is not supported by IE
 // A polyfill is available on MDN for older browsers
+
+// Array.prototype.flat()
+// This method is only experimental right now
+// It is not available on almost all browsers
+// This method will flatten an array to the depth specified (.flat(depth))
+// depth is defaulted to 1 if not specified
+
+// var arrToFlat = [1, 2, [3, 4, [5, 6]]];
+// var flattened1 = arrToFlat.flat(); // [1, 2, 3, 4, [5, 6]];
+// var flattened2 = arrToFlat.flat(2); // [1, 2, 3, 4, 5, 6];
+
+// console.log(flattened1, flattened2);
+
+// It can also be used to remove empty slots in the array
+// var arrToFlat2 = [1, 2, , 4, 5];
+// var flattened3 = arrToFlat2.flat(); // [1, 2, 4, 5];
+// console.log(flattened3);
