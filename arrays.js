@@ -84,3 +84,22 @@ if (!Array.isArray) {
     return Object.prototype.toString.call(arg) === "[object Array]";
   };
 }
+
+// Array.of() creates a new Array instance with the arguments that are passed in
+var ofArr = Array.of(7); // [7]
+var ofArr2 = Array.of(undefined, true, false, "blue", 8); // [undefined, true, false, 'blue', 8]
+var notOfArr = Array(7); //[, , , , , ,] --- 7 empty elements in array
+var notOfArr2 = Array(1, 2, 3); // [1, 2, 3]
+
+console.log(ofArr, ofArr2, notOfArr, notOfArr2);
+
+// Array.of() allows passing a single integer value as the only element in the array
+// When passing a single integer value to Array(), an array with a length equal to the integer is created. All elements of the array will be empty
+
+// Array.of() is not supported in IE
+// Polyfill
+if (!Array.of) {
+  Array.of = function() {
+    return Array.prototype.slice.call(arguments);
+  };
+}
