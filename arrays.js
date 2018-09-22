@@ -186,3 +186,23 @@ var areIntegers2 = notOnlyIntArr.every(isInt);
 console.log(areIntegers2); // false
 
 // .every is compatible in all modern browsers, however a polyfill is available for those running on ECMAScript < 5.1
+
+// Array.prototype.fill()
+// This method fills an array with the specified value from a start position to end position
+// arr.fill(value, start, end)
+// value is the value you wish to set these elements equal to
+// start is the beginning index from which to fill
+// end is the last index to fill (non inclusive)
+
+var arrToFill = ["a", "b", "c", { cat: "dog" }, [1, 2, 3]];
+
+arrToFill.fill("value", 3, 5); // ['a', 'b', 'c', 'value', 'value']
+
+console.log(arrToFill);
+
+// start defaults to 0 if not provided, end defaults to arrToFill.length if not provided
+arrToFill.fill("bob"); // ['bob', 'bob', 'bob', 'bob', 'bob']
+
+console.log(arrToFill);
+
+// .fill method is an ES6 specification and a polyfill is available on MDN if needed
