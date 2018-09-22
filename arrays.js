@@ -164,3 +164,25 @@ while (!done) {
 }
 
 // {value: [0, 1], done: false} - {value: [1, 2], done: false} - {value: [2, 3], done: false}
+
+// Array.prototype.entries is an ES6 specification and requires polyfill for older browsers, including IE
+
+// Array.prototype.every()
+// This method takes a function as its argument and an optional 'this' parameter as second argument
+// This function is called on each element of the array and will return true or false based on some condition
+// The callback is passed the elements value, it's index and the original array as args
+// If every element returns true, .every returns true, otherwise it returns false
+
+var integerArr = [1, 2, 5, 7, 22, 33];
+function isInt(num) {
+  return typeof num === "number" && num % 1 === 0;
+}
+
+var areIntegers = integerArr.every(isInt);
+console.log(areIntegers); // true
+
+var notOnlyIntArr = [1, 2.3, 5, 7, 22, 33];
+var areIntegers2 = notOnlyIntArr.every(isInt);
+console.log(areIntegers2); // false
+
+// .every is compatible in all modern browsers, however a polyfill is available for those running on ECMAScript < 5.1
