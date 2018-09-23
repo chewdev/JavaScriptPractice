@@ -442,3 +442,16 @@ var skillsCS = skillsArr.join(", ");
 console.log(skillsCS); // 'React, Node, Express, MongoDB, MySQL, JavaScript, HTML, CSS'
 
 // .join is fully compatible in all browsers. Was included in 1st Edition of ES
+
+// Array.prototype.keys()
+// This method returns a new Array Iterator object that contains the keys of each index
+
+var keysArr = ["bob", "john", "jane"];
+var keysIt = keysArr.keys();
+var nextKey = keysIt.next();
+while (!nextKey.done) {
+  console.log(nextKey.value);
+  nextKey = keysIt.next();
+} // 0, 1, 2
+
+// .keys is an ES6 specification and is supported by all major modern browsers except IE
