@@ -694,3 +694,31 @@ otherStrArr.sort();
 console.log(otherStrArr); // ['Apple', 'Orange', 'Strawberry', 'banana', 'grape']
 
 // .sort is a 1st Edition ES specification and is available on all browsers
+
+// Array.prototype.splice()
+// This method alters / mutates the array that it is called upon
+// It can be used to remove elements and/or add elements
+// .splice(start, deleteCount, ...itemsToAdd)
+// start is the index at which to begin removing and/or adding elements
+// deleteCount is the amount of elements from the start index to remove from the array
+// ...itemsToAdd is a list of arguments, each of which is to be added to the array at the start index in order
+
+var arrToSplice = [1, 2, 2, 4, 5];
+// Use splice to fix this array of integers from 1 to 5
+arrToSplice.splice(2, 1, 3); // At index 2, remove 1 element (the second 2) and insert a 3 in it's place
+console.log(arrToSplice); // [1, 2, 3, 4, 5]
+
+var arrToSplice2 = [1, 2, 3, 5, 6];
+arrToSplice2.splice(3, 0, 4); // At index 3, remove 0 elements and insert a 4
+console.log(arrToSplice2); // [1, 2, 3, 4, 5, 6]
+// Just remove the 6 at the end of the array
+var splicedOff = arrToSplice2.splice(arrToSplice2.length - 1, 1);
+console.log(arrToSplice2);
+console.log(splicedOff); // splice returns the removed elements as an array - [6]
+
+// We want an array of just 1 to 3
+var splicedEnd = arrToSplice2.splice(3); // If only start index is passed, all elements from that index to the end are removed
+console.log(arrToSplice2); // [1, 2, 3]
+console.log(splicedEnd); // [4, 5]
+
+// .splice is an ES 3rd Edition specification and available in all major modern browsers
