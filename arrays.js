@@ -743,3 +743,14 @@ console.log(localeDateStr); // '12/24/2017, 4:00:01 PM,12/24/2016, 4:00:01 PM,12
 
 // .toLocaleString was initially defined in ES 3 and is available in all major modern browsers
 // However, there are some issues with providing locales parameter and/or options parameter on certain browsers on android devices
+
+// Array.prototype.toString()
+// This method returns a string
+// Each element is converted to a string separated with the next element by a comma and joined into a single string
+
+var arrToString = [1, "apple", "a day", "keeps", "the", "doctor", "away"];
+var stringArr = arrToString.toString();
+console.log(stringArr); // '1,apple,a day,keeps,the,doctor,away'
+console.log(stringArr.replace(/[,]/g, " ")); // '1 apple a day keeps the doctor away'
+
+// .toString was implemented in ES 1st Edition and is available in all browsers
