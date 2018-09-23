@@ -371,3 +371,20 @@ forEachArr.forEach(el => console.log(el)); // 'bob', 'joe', 'jane'
 
 // .forEach method is available in all major modern browsers
 // A polyfill is available on MDN if support for ES < 5.1 is needed
+
+// Array.prototype.includes()
+// This method checks if the array includes a certain element
+// It returns true if it does contain the element and false otherwise
+// arr.includes(searchElement, fromIndex) takes the element you are searching for as 1st arg
+// 2nd arg is option and is the index of the array from which you want to begin searching
+
+var includesArr = [1, 2, 3, 4, 5, 6];
+var isIncluded = includesArr.includes(2); // true
+console.log(isIncluded);
+var isIncluded2 = includesArr.includes(2, 3); // false (2 doesn't exist after the element in the array with an index of 3, it is at index 1);
+console.log(isIncluded2);
+var isIncluded3 = includesArr.includes(2, 1); // true
+console.log(isIncluded3);
+
+// .includes is an ES7 specification and is supported is most major modern browsers except IE
+// If older browser support is required, a polyfill is available on MDN
