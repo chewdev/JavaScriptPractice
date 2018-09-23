@@ -386,5 +386,34 @@ console.log(isIncluded2);
 var isIncluded3 = includesArr.includes(2, 1); // true
 console.log(isIncluded3);
 
-// .includes is an ES7 specification and is supported is most major modern browsers except IE
+// .includes is an ES7 specification and is supported in most major modern browsers except IE
 // If older browser support is required, a polyfill is available on MDN
+
+// Array.prototype.indexOf()
+// This method returns the first index at which an specific value can be found in an array
+// It returns -1 if the value is not found within the array
+// arr.indexOf(searchElement, fromIndex) takes the value we are searching for and an optional second argument of the index from which to begin searching
+
+var indexOfArr = [1, 2, 3, 4, 5, 6, 1, 2, 1];
+var indexOf1 = indexOfArr.indexOf(1); // 0
+console.log(indexOf1);
+var indexOf5 = indexOfArr.indexOf(5); // 4
+console.log(indexOf5);
+
+// Use indexOf to find the index of all instances of a value (1)
+var indexesOf1 = [];
+var start = indexOfArr.indexOf(1); // If it exists, find the index of the first instance of the searched element
+
+// Exit out of while loop once index of the next instance is -1. This means there is not a next instance and all instances have been found
+while (start !== -1) {
+  // The next instance exists, push it's index value into the array of indices
+  indexesOf1.push(start);
+  // Search from the index after the current found index to see if more instances exist
+  start = indexOfArr.indexOf(1, start + 1);
+}
+
+console.log(indexesOf1); //[0, 6, 8];
+
+// .indexOf is an ES5 specification and is available in all major modern browsers
+// It should be polyfilled if support for ES < 5.1 is necessary
+// Polyfill can be found on MDN
