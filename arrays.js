@@ -770,3 +770,23 @@ console.log(arrToUnshift); // [-2, -1, 0, 1, 2, 3, 4, 5]
 // .unshift is more costly than .push as all existing elements must be re-indexed (shifted)
 // .unshift was initially added in the ES 3rd Edition specification
 // it is available in all modern browsers
+
+// Array.prototype.values()
+// This method returns a new Array Iterator object that contains the values of each index in the array
+
+var arrValues = ["bob", "john", "jane"];
+var valuesIt = arrValues.values();
+var next = valuesIt.next();
+while (!next.done) {
+  console.log(next.value);
+  next = valuesIt.next();
+}
+// console: bob -> john -> jane
+
+// Can also iterate through the iterator using a for...of loop
+// for (let name of valuesIt) { console.log(name); }
+
+// Array.prototype.values === Array.prototype[Symbol.iterator]      //true
+
+// .values is an ES6 specification and is supported by most major modern browsers
+// IE and Samsung internet do not currently support it
