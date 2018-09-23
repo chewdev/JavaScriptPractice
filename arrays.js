@@ -508,3 +508,14 @@ console.log(boolArr); // [false, false, false, true, true, true, false, true, tr
 
 // .map is an ES 5.1 specification and is available in all major modern browsers
 // A polyfill is available for older browsers on MDN if needed
+
+// Array.prototype.pop()
+// This method removes the last element of an array and returns that element
+// This modifies the original array, but does not return the array, only the element that was removed
+
+var arrToPop = [1, 2, 3, 4, 5];
+var lastEl = arrToPop.pop(); // 5
+console.log(lastEl);
+console.log(arrToPop); // [1, 2, 3, 4]
+
+// .pop was introduced in ES3 and is available in all modern browsers
