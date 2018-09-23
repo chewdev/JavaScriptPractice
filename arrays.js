@@ -639,3 +639,24 @@ console.log(arrToSlice); // unchanged -> [1, 2, 3, 5, 6]
 
 // .slice is an ES 3rd Edition specification and is supported by all major modern browsers
 // However, IE < 9 has issues with implementation and polyfill is available on MDN
+
+// Array.prototype.some()
+// This method tests whether at least one element of an array passes a conditional callback
+// If any element returns true from the callback, .some returns true
+// If no element returns true from the callback, it returns false
+// .some(callback, thisArg) -> first arg is conditional callback and 2nd arg is the 'this' for the callback
+
+var someArr = [1, 2, 3, 4, 5];
+var someTrue = someArr.some(el => el % 2 === 0); // true (some elements are even)
+console.log(someTrue);
+var someFalse = someArr.some(el => el > 10); // false (no elements are > 10)
+console.log(someFalse);
+console.log([].some(el => el !== 0)); // false - always returns false when called on empty array
+
+// .some will test each element of array until one returns a truthy value
+// when one returns a truthy value, .some will short-circuit and not run the test on
+// the rest of the elements. It will break and return true.
+// If no elements return true, it will run the callback on all elements present in array
+
+// .some is an ES5.1 specification and available in all major modern browsers
+// A polyfill is available on MDN if needed for older, unsupported browsers
