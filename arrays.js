@@ -519,3 +519,18 @@ console.log(lastEl);
 console.log(arrToPop); // [1, 2, 3, 4]
 
 // .pop was introduced in ES3 and is available in all modern browsers
+
+// Array.prototype.push()
+// This method adds one or more elements to the end of an array and returns the new length of the array
+// Each argument passed into the push method is added as a new element on the array
+
+var arrToPush = ["bob", false, 1];
+var newLengthPush = arrToPush.push({ pushed: true }, function() {
+  console.log("pushed");
+});
+
+console.log(newLengthPush); // 5
+console.log(arrToPush); // ['bob', false, 1, {pushed: true}, function() {console.log('pushed')}]
+arrToPush[4](); // 'pushed'
+
+// .push was introduced in ES3 and is available in all modern browsers
