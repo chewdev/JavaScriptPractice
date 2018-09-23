@@ -591,3 +591,17 @@ arrToReverse.reverse();
 console.log(arrToReverse); // ['this', 'should', 'be', 'reversed']
 
 // .reverse is an ES 1st Edition specification and is available in all browsers
+
+// Array.prototype.shift()
+// This method removes the first element from the array it is called upon, returning that element and altering the original array
+
+var arrToShift = [
+  "shift this",
+  "I should be first!",
+  "Anything is better than 3rd"
+];
+var shifted = arrToShift.shift();
+console.log(shifted); // 'shift this'
+console.log(arrToShift); // ['I should be first!', 'Anything is better than 3rd']
+
+// .shift is an ES 3rd Edition specification and was implemented in JavaScript 1.2
