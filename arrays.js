@@ -809,3 +809,23 @@ while (!next.done) {
 
 // [Symbol.iterator] is an ES6 specification and is available in many modern browsers
 // It is not available in IE and support in Edge is unknown according to MDN
+
+// get Array[@@species]
+// This is an accessor property that returns the Array constructor
+// Array[Symbol.species]
+// It returns the default constructor for Array objects
+// Subclass constructors may override it to change constructor assignment
+// Not widely used
+
+var arrConstruct = Array[Symbol.species];
+console.log(arrConstruct); // ƒ Array() { [native code] }
+
+// MDN example usage
+class MyArray extends Array {
+  // Overwrite MyArray species to the parent Array constructor
+  static get [Symbol.species]() {
+    return Array;
+  }
+}
+
+// get Array[@@species] is an ES6 specification with very little known support and it's usage is uncommon
