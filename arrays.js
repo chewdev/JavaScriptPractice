@@ -417,3 +417,28 @@ console.log(indexesOf1); //[0, 6, 8];
 // .indexOf is an ES5 specification and is available in all major modern browsers
 // It should be polyfilled if support for ES < 5.1 is necessary
 // Polyfill can be found on MDN
+
+// Array.prototype.join()
+// This method joins the array elements (concatenates) into a single string and returns the string
+// The method accepts a string as an argument and will separate each element of the array by this string
+// undefined and null elements are converted to empty strings
+
+var arrToJoin = ["the", "cow", "goes", "mooo"];
+var joinedStr = arrToJoin.join(" "); // separate each element by a space in the new string
+console.log(joinedStr);
+
+// Create a comma separated list
+var skillsArr = [
+  "React",
+  "Node",
+  "Express",
+  "MongoDB",
+  "MySQL",
+  "JavaScript",
+  "HTML",
+  "CSS"
+];
+var skillsCS = skillsArr.join(", ");
+console.log(skillsCS); // 'React, Node, Express, MongoDB, MySQL, JavaScript, HTML, CSS'
+
+// .join is fully compatible in all browsers. Was included in 1st Edition of ES
