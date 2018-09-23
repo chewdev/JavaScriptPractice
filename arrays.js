@@ -722,3 +722,24 @@ console.log(arrToSplice2); // [1, 2, 3]
 console.log(splicedEnd); // [4, 5]
 
 // .splice is an ES 3rd Edition specification and available in all major modern browsers
+
+// Array.prototype.toLocaleString()
+// This method returns a string representing the elements of the array
+// Each element is converted to a string using the toLocaleString method
+// Each element in the return string is separated by a locale-specific string. i.e. ","
+// .toLocaleString(locales, options)
+// locales can either be a single locale or an array of locales
+// options is optional and provides configuration properties - Read more on MDN
+
+var dateArr = [
+  new Date("25 Dec 2017 00:00:01 UTC"),
+  new Date("25 Dec 2016 00:00:01 UTC"),
+  new Date("25 Dec 2015 00:00:01 UTC")
+];
+
+var localeDateStr = dateArr.toLocaleString("en", { timeZone: "UTC" });
+
+console.log(localeDateStr); // '12/24/2017, 4:00:01 PM,12/24/2016, 4:00:01 PM,12/24/2015, 4:00:01 PM'
+
+// .toLocaleString was initially defined in ES 3 and is available in all major modern browsers
+// However, there are some issues with providing locales parameter and/or options parameter on certain browsers on android devices
