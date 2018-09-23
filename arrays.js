@@ -455,3 +455,21 @@ while (!nextKey.done) {
 } // 0, 1, 2
 
 // .keys is an ES6 specification and is supported by all major modern browsers except IE
+
+// Array.prototype.lastIndexOf()
+// This method returns the last index in an array at which a specified value is present
+// It accepts 2 arguments, the search value and the from index
+// The from index indicates the index at which to begin and work backwards towards index 0 from
+// If not specified, from index defaults to the array length - 1 (last element of array)
+
+var lastIndArr = ["bob", "john", "jane", "john"];
+var lastIndJohn = lastIndArr.lastIndexOf("john"); // 3
+console.log(lastIndJohn);
+var secLastIndJohn = lastIndArr.lastIndexOf("john", -2); // 1
+console.log(secLastIndJohn);
+// lastIndexOf returns -1 if no elements are equal to the search value
+var noLastInd = lastIndArr.lastIndexOf("joe"); // -1
+console.log(noLastInd);
+
+// lastIndexOf is an ES 5.1 specification and supported by all major modern browsers
+// A polyfill is available on MDN if older browser support is needed
