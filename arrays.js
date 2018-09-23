@@ -570,3 +570,15 @@ console.log(charCountReduce); // {" ": 2, a: 2, c: 3, e: 2, h: 2, n: 1, o: 1, r:
 
 // .reduce is an ES5.1 specification and is available in all major modern browsers
 // A polyfill is available on MDN if needed for older browsers
+
+// Array.prototype.reduceRight()
+// Same as above .reduce method, but it starts at the last element of the array and iterates through to the first element of the array
+
+var reduceRightArr = ["right", "reduce", "is", "this"];
+var rightReduced = reduceRightArr.reduceRight(
+  (acc, el) => acc.concat(" " + el),
+  ""
+);
+console.log(rightReduced); // 'this is reduce right'
+
+// rightReduce is an ES5.1 specification
