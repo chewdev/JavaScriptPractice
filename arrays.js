@@ -605,3 +605,37 @@ console.log(shifted); // 'shift this'
 console.log(arrToShift); // ['I should be first!', 'Anything is better than 3rd']
 
 // .shift is an ES 3rd Edition specification and was implemented in JavaScript 1.2
+
+// Array.prototype.slice()
+// This method is used to create a shallow copy of a portion of an array
+// It returns a new array object and does not mutate the original array
+// .slice(begin, end)
+// begin is the first element from which to copy (inclusive) and defaults to 0
+// end is the last element to copy to (non-inclusive) and defaults to array length
+// if begin is > array length, empty array is returned
+
+var arrToSlice = [1, 2, 3, 5, 6];
+
+function changeDontMutate(arr) {
+  return arr
+    .slice(0, 3)
+    .concat(4)
+    .concat(arr.slice(3));
+}
+
+var fixedSlice = changeDontMutate(arrToSlice);
+console.log(fixedSlice); // [1, 2, 3, 4, 5, 6]
+console.log(arrToSlice); // not mutated -> [1, 2, 3, 5, 6]
+
+var sliceLastEl = arrToSlice.slice(arrToSlice.length - 1);
+console.log(sliceLastEl); // [6]
+
+var copyArrSlice = arrToSlice.slice();
+console.log(copyArrSlice); // [1, 2, 3, 5, 6]
+console.log(arrToSlice); // [1, 2, 3, 5, 6]
+copyArrSlice.push(7);
+console.log(copyArrSlice); // [1, 2, 3, 5, 6, 7]
+console.log(arrToSlice); // unchanged -> [1, 2, 3, 5, 6]
+
+// .slice is an ES 3rd Edition specification and is supported by all major modern browsers
+// However, IE < 9 has issues with implementation and polyfill is available on MDN
