@@ -582,3 +582,12 @@ var rightReduced = reduceRightArr.reduceRight(
 console.log(rightReduced); // 'this is reduce right'
 
 // rightReduce is an ES5.1 specification
+
+// Array.prototype.reverse()
+// This method reverses the array. It changes the array that it is called upon
+
+var arrToReverse = ["reversed", "be", "should", "this"];
+arrToReverse.reverse();
+console.log(arrToReverse); // ['this', 'should', 'be', 'reversed']
+
+// .reverse is an ES 1st Edition specification and is available in all browsers
