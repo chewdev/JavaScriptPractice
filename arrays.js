@@ -473,3 +473,38 @@ console.log(noLastInd);
 
 // lastIndexOf is an ES 5.1 specification and supported by all major modern browsers
 // A polyfill is available on MDN if older browser support is needed
+
+// Array.prototype.map()
+// This method maps over each element of the array and returns a new array
+// Each element is passed to the callback function provided
+// The value returned from the callback is pushed into the new array at the location of the current element
+// The new array that is returned is the same length as the array that is mapped over
+
+// The method accepts 2 args- first a callback, second the 'this' arg for that callback
+// The callback is passed 3 args- first the element, second the elements index, third the entire array
+
+var arrToMap = [1, 2, 3, 4, 5];
+var plusNext = arrToMap.map(
+  (el, ind, arr) => (arr[ind + 1] ? el + arr[ind + 1] : el)
+);
+console.log(plusNext); // [3, 5, 7, 9, 5]
+
+var arrToMap2 = [
+  null,
+  undefined,
+  0,
+  1,
+  2,
+  -1,
+  "",
+  {},
+  [],
+  "bob",
+  [1],
+  { b: "3" }
+];
+var boolArr = arrToMap2.map(el => !!el);
+console.log(boolArr); // [false, false, false, true, true, true, false, true, true, true, true, true];
+
+// .map is an ES 5.1 specification and is available in all major modern browsers
+// A polyfill is available for older browsers on MDN if needed
