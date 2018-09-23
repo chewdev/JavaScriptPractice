@@ -660,3 +660,37 @@ console.log([].some(el => el !== 0)); // false - always returns false when calle
 
 // .some is an ES5.1 specification and available in all major modern browsers
 // A polyfill is available on MDN if needed for older, unsupported browsers
+
+// Array.prototype.sort()
+// This method is used to sort an array in place and is not necessarily stable
+// The default sort order is according to string Unicode points
+// The sort is implemented differently across browsers
+// .sort(compareFunc) takes a compare function that compares elements in the array to determine their order
+// the compareFunc(a, b) is passed 2 arguments (currentElement, nextElement)
+// If the compareFunc returns < 0, a is placed before b
+// If compareFunc returns > 0, b is placed before a
+// If compareFunc returns 0, a and b should be unchanged in position with respect to each other. However this is not guaranteed in the ES standard and is not reliable in all browsers, especially older ones
+// the compareFunc must be a pure function (return same value for same inputs every time)
+// .sort modifies the array in place (mutates original array)
+var arrToSort = [5, 2, 10, 1, 11, 200];
+arrToSort.sort((a, b) => (a < b ? -1 : 1));
+console.log(arrToSort); // [1, 2, 5, 10, 11, 200] sorted in ascending order
+arrToSort.sort((a, b) => (a < b ? 1 : -1));
+console.log(arrToSort); // [200, 11, 10, 5, 2, 1] sorted in descending order
+arrToSort.sort();
+// When no compareFunc is passed to sort, the default compareFunc
+// converts all elements to strings and compares Unicode codes
+// Thus, since '10' starts with a 1, it's Unicode code comes before '2' and is placed before it when sorted
+console.log(arrToSort); // [1, 10, 11, 2, 200, 5]
+
+var strArrToSort = ["strawberry", "banana", "apple", "orange", "grape"];
+strArrToSort.sort();
+// Default sort works as typically expected on an array of strings that are lowercase
+console.log(strArrToSort); // ['apple', 'banana', 'grape', 'orange', 'strawberry']
+
+var otherStrArr = ["Orange", "banana", "Apple", "grape", "Strawberry"];
+otherStrArr.sort();
+// Default sort will put all capitalized strings before lowercase strings as capital letter Unicodes come before lowercase Unicodes
+console.log(otherStrArr); // ['Apple', 'Orange', 'Strawberry', 'banana', 'grape']
+
+// .sort is a 1st Edition ES specification and is available on all browsers
