@@ -754,3 +754,19 @@ console.log(stringArr); // '1,apple,a day,keeps,the,doctor,away'
 console.log(stringArr.replace(/[,]/g, " ")); // '1 apple a day keeps the doctor away'
 
 // .toString was implemented in ES 1st Edition and is available in all browsers
+
+// Array.prototype.unshift()
+// This method adds on new elements to the beginning of an array
+// The method returns the new length of the array
+
+var arrToUnshift = [2, 3, 4, 5];
+var newArrCount = arrToUnshift.unshift(1);
+console.log(newArrCount); // 5
+console.log(arrToUnshift); // [1, 2, 3, 4, 5]
+newArrCount = arrToUnshift.unshift(-2, -1, 0);
+console.log(newArrCount); // 8
+console.log(arrToUnshift); // [-2, -1, 0, 1, 2, 3, 4, 5]
+
+// .unshift is more costly than .push as all existing elements must be re-indexed (shifted)
+// .unshift was initially added in the ES 3rd Edition specification
+// it is available in all modern browsers
