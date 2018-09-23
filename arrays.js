@@ -790,3 +790,22 @@ while (!next.done) {
 
 // .values is an ES6 specification and is supported by most major modern browsers
 // IE and Samsung internet do not currently support it
+
+// Array.prototype[@@iterator]()
+// This property is the same function object as the initial value of the values() method
+// It returns the initial value given by the values() iterator.
+// By default, using arr[Symbol.iterator] returns the values() function
+// This creates an Array Iterator from the array it is called upon
+// The iterator can be looped over in a for...of loop
+
+var arrToIter = ["a", "b", "c", "d"];
+var iteratorObj = arrToIter[Symbol.iterator]();
+var next = iteratorObj.next();
+while (!next.done) {
+  console.log(next.value);
+  next = iteratorObj.next();
+}
+// logs to the console 'a' -> 'b' -> 'c' -> 'd'
+
+// [Symbol.iterator] is an ES6 specification and is available in many modern browsers
+// It is not available in IE and support in Edge is unknown according to MDN
