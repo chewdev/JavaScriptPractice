@@ -534,3 +534,39 @@ console.log(arrToPush); // ['bob', false, 1, {pushed: true}, function() {console
 arrToPush[4](); // 'pushed'
 
 // .push was introduced in ES3 and is available in all modern browsers
+
+// Array.prototype.reduce()
+// This method accepts a callback that is passed an accumulator and the current element
+// The accumulator is initialized after the callback
+// The new value of the accumulator should be returned in the callback
+
+// .reduce((accumulator, element, index, array) => newAccumulatorValue, initAccumulatorVal)
+// If initAccumulatorVal is not provided, the initial accumulator value will be equal to the first element of the array
+// The current value will be set equal to the second element instead of the first
+
+var arrToReduce = [1, 2, 3, 4, 5];
+var sumReduce = arrToReduce.reduce((acc, el) => acc + el, 0);
+console.log(sumReduce); // 15
+
+var stringToReduce = "count the characters";
+var arrToReduceFromString = stringToReduce.split("");
+
+var charCountReduce = arrToReduceFromString.reduce((accObj, char) => {
+  accObj[char] = ++accObj[char] || 1;
+  return accObj;
+}, {});
+
+console.log(charCountReduce); // {" ": 2, a: 2, c: 3, e: 2, h: 2, n: 1, o: 1, r: 2, s: 1, t: 3, u: 1}
+
+// .reduce has many uses including:
+// 1. sum all values of an array
+// 2. sum values in an object array
+// 3. flatten an array of arrays
+// 4. counting instances of values in an object
+// 5. grouping objects by a property
+// 6. removing duplicate items in an array
+// 7. running promises in sequence
+// 8. function composition enabling piping
+
+// .reduce is an ES5.1 specification and is available in all major modern browsers
+// A polyfill is available on MDN if needed for older browsers
