@@ -113,3 +113,54 @@ findMaxArr.push(...newEls); // findMaxArr = [1, 2, 3, 4, 5, 6, 7, 6, 7]
 // Can be used to chain constructors
 
 // .apply is an ES 3rd Edition specification and is available in all modern browsers
+
+// Function.prototype.bind()
+// This method creates a new function that when called has a 'this' value set to the provided thisArg
+// More arguments can be passed after the thisArg
+// These will act as permanent arguments to the function
+// i.e. boundFunc = myFunc.bind(myThis, 10) means that every time we call boundFunc, 10 will be passed as the first arg
+// The first argument passed to boundFunc will be treated as the second argument: boundFunc(7)
+// If myFunc = function(x, y) { return x + y; } then x is always 10 in boundFunc
+// Since boundFunc was called with an argument of 7, y will be 7 and boundFunc will return 17
+
+var myFuncToBind = function(x, y) {
+  return x + y;
+};
+
+var myBoundFunc = myFuncToBind.bind(null, 10);
+
+console.log(myBoundFunc(7)); // 17
+
+// functions invoked at the global scope have a this of global/window obj
+// When setting a function at the global level to a method on an obj, the 'this' will reference the global/window obj
+// Must bind 'this' of the original object
+var myObj = {
+  x: 10,
+  getX: function() {
+    return this.x;
+  }
+};
+console.log(myObj.getX()); // 10
+
+var getObjX = myObj.getX;
+console.log(getObjX()); // undefined
+
+var boundGetObjX = getObjX.bind(myObj);
+console.log(boundGetObjX()); // 10
+
+// Can make partially applied functions like first example
+var multiply = function(x, y) {
+  return x * y;
+};
+var multiplyBy10 = multiply.bind(null, 10);
+var multiplyBy5 = multiply.bind(null, 5);
+var multiplyBy2 = multiply.bind(null, 2);
+
+console.log(multiplyBy10(10)); // 100
+console.log(multiplyBy5(10)); // 50
+console.log(multiplyBy2(10)); // 20
+
+// There are many other uses for bind, examples available on MDN
+
+// .bind is an ES5.1 specification and is available on all major modern browsers
+// There is a polyfill available on MDN for any old browser that may not support .bind
