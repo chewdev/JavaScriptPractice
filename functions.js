@@ -29,3 +29,22 @@ console.log(args2.length); // 2
 console.log(restArgs.length); // 0, rest parameter is not counted
 
 // Function.length is an ES 1st Edition specification and is available on all browsers
+
+// Function.prototype.name
+// This property returns the name of the function or "anonymous" if it's an anonymous function
+// This property is read only and can not be changed
+
+var someFunc = function() {
+  console.log("someFunc");
+};
+console.log(someFunc.name); // someFunc
+function anotherFunc() {
+  console.log("anotherFunc");
+}
+console.log(anotherFunc.name); // anotherFunc
+
+// bound functions will have a name of "bound funcname"
+// get and set accessor properties on objects will have a name of "get funcname", "set funcname"
+
+// .name is not commonly used
+// .name is an ES6 specification and is not supported in IE
