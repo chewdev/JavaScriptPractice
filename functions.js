@@ -48,3 +48,28 @@ console.log(anotherFunc.name); // anotherFunc
 
 // .name is not commonly used
 // .name is an ES6 specification and is not supported in IE
+
+// Function.prototype
+// Methods and properties can be added onto the Function prototype object
+// These methods/properties will be available to all functions created
+
+Function.prototype.hasBeenCalled = false;
+
+function toCall() {
+  toCall.hasBeenCalled = true;
+}
+
+console.log(toCall.hasBeenCalled);
+toCall();
+console.log(toCall.hasBeenCalled);
+
+function dontCall() {
+  dontCall.hasBeenCalled = true;
+}
+
+console.log(dontCall.hasBeenCalled);
+dontCall();
+console.log(dontCall.hasBeenCalled);
+
+// Adding properties to native objects is considered bad practice and should not be done
+// It is preferred that you create your own object with these properties
