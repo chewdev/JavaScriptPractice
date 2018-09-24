@@ -73,3 +73,43 @@ console.log(dontCall.hasBeenCalled);
 
 // Adding properties to native objects is considered bad practice and should not be done
 // It is preferred that you create your own object with these properties
+
+// Function.prototype.apply()
+// This method calls the function allowing the use of a given 'this' value within the function
+// .apply(thisArg, [arg1, arg2, ...])
+// thisArg is the 'this' value to be used within the function
+// [arg1, arg2, ...] is an array of the arguments to pass to the function
+// normal call to function is myFunc(arg1, arg2, ...)
+
+var myThis = {
+  name: "bob"
+};
+
+function applyThis(x, y) {
+  console.log(this.name);
+  console.log(x + y);
+}
+
+applyThis.apply(myThis, [1, 2]); // console.logs: bob -> 3
+applyThis(1, 2); // console.logs: (empty output) -> 3
+
+var findMaxArr = [1, 2, 3, 4, 5];
+// var max = Math.max(findMaxArr); // Doesn't work, returns NaN because .max does not accept array
+var max = Math.max.apply(null, findMaxArr); // returns 5 as arguments is expected to be an array
+console.log(max); // 5
+
+// Can also use spread operator instead
+var otherMax = Math.max(...findMaxArr);
+console.log(otherMax); // 5
+
+// Can also be used with methods like Array.prototype.push
+var newEls = [6, 7];
+findMaxArr.push.apply(findMaxArr, newEls); // findMaxArr = [1, 2, 3, 4, 5, 6, 7]
+console.log(findMaxArr);
+
+// Can also use spread operator in this case
+findMaxArr.push(...newEls); // findMaxArr = [1, 2, 3, 4, 5, 6, 7, 6, 7]
+
+// Can be used to chain constructors
+
+// .apply is an ES 3rd Edition specification and is available in all modern browsers
