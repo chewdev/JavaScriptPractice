@@ -12,6 +12,9 @@
 // The expectation is that this method should return the display name of the function
 // display name is a property on the function that can be assigned
 
+// Function.prototype.toSource() is a non-standard and should not be used in production web apps
+// The expectation is that this method should return a string representing the source code of the object (function)
+
 // Function.length
 // This property of functions returns the number of arguments expected by the function
 
@@ -180,3 +183,14 @@ console.log(funcToCall.call(objWithX, 20, 5)); // 35
 console.log(funcToCall.apply(objWithX, [20, 5])); // 35
 
 // .call is an ES 1st Edition specification and is available in all browsers
+
+// Function.prototype.toString()
+// This function returns a string that represents the source code of the function
+// Native code is not displayed
+
+console.log(funcToCall.toString());
+// 'var funcToCall = function(x, y) {
+//   console.log(this.x + x + y);
+// };'
+
+// .toString is an ES 1st Edition specification and is supported by all browsers
