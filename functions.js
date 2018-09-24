@@ -164,3 +164,19 @@ console.log(multiplyBy2(10)); // 20
 
 // .bind is an ES5.1 specification and is available on all major modern browsers
 // There is a polyfill available on MDN for any old browser that may not support .bind
+
+// Function.prototype.call()
+// This method is extemely similar to the apply method above
+// The only fundamental difference is that .call takes an argument list and .apply takes an array of arguments
+var objWithX = {
+  x: 10
+};
+var funcToCall = function(x, y) {
+  console.log(this.x + x + y);
+};
+
+console.log(funcToCall.call(objWithX, 20, 5)); // 35
+// with apply
+console.log(funcToCall.apply(objWithX, [20, 5])); // 35
+
+// .call is an ES 1st Edition specification and is available in all browsers
