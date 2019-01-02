@@ -13,17 +13,26 @@ function countChars(str) {
   var charMap = {};
   // loop over string (str) input and for each character, check if it is alphanumeric
   for (var char of str) {
-    if (/[a-zA-Z0-9]/.test(char)) {
+    if (isAlphaNumeric(char)) {
       // if it is alphanumeric, make sure it is lowercase, else change it to lowercase
-      if (/[A-Z]/.test(char)) {
-        char = char.toLowerCase();
-      }
+      char = char.toLowerCase();
       // increment value if character is on object, else add character to object and set value to 1
-      charMap[char] = charMap[char] ? charMap[char] + 1 : 1;
+      charMap[char] = ++charMap[char] || 1;
     }
     // if not alphanumeric, ignore the character
   }
-
   // return object with counts
   return charMap;
+}
+
+function isAlphaNumeric(char) {
+  var code = char.charCodeAt(0);
+  if (
+    !(code > 47 && code < 58) &&
+    !(code > 64 && code < 91) &&
+    !(code > 96 && code < 123)
+  ) {
+    return false;
+  }
+  return true;
 }
